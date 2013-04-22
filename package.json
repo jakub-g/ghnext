@@ -1,0 +1,16 @@
+{
+  "author": "Jakub Gieryluk <jakub.g.opensource@gmail.com> (http://github.com/jakub-g)",
+  "name": "ghnext",
+  "description": "GitHub next issue number finder.",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jakub-g/ghnext.git"
+  },
+  "bin": {
+    "ghnext": "bin/ghnext.js"
+  },
+  "dependencies": {
+    "open": "0.0.3"
+  }
+}
