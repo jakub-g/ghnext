@@ -55,9 +55,17 @@ switch(process.argv.length){
 var org = process.argv[2];
 var repo = process.argv[3];
 
-var basePath = 'https://api.github.com/repos/'+org+'/'+repo+'/issues?sort=created&direction=desc';
-var path1 = basePath + '&state=closed';
-var path2 = basePath + '&state=open';
+var opts1 = {
+    headers: {
+        "User-Agent" : "GHnext"
+    },
+    hostname : 'api.github.com',
+    path : '/repos/'+org+'/'+repo+'/issues?sort=created&direction=desc'
+};
+var opts2 = JSON.parse(JSON.stringify(opts1)); // clone
+
+opts1.path += '&state=closed';
+opts2.path += '&state=open';
 
 var nbCompleted = 0;
 var ids = [];
@@ -87,8 +95,8 @@ var callbackFactory = function () {
 };
 
 // Obtain the newest open and newest closed issue.
-https.get(path1, callbackFactory());
-https.get(path2, callbackFactory());
+https.get(opts1, callbackFactory());
+https.get(opts2, callbackFactory());
 
 // Opening the browser before the callbacks are finished, because invoking a new page
 // from command line takes a few seconds.
