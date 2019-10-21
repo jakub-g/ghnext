@@ -11,6 +11,6 @@
     "ghnext": "bin/ghnext.js"
   },
   "dependencies": {
-    "open": "0.0.3"
+    "open": "7.0.0"
   }
 }
